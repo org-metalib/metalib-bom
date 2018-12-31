@@ -8,6 +8,15 @@
     <artifactId>metalib-bom</artifactId>
     <packaging>pom</packaging>
     <version>0.0.1-SNAPSHOT</version>
+    <name>${project.artifactId}</name>
+    <description>Metalib Maven Bills of Materials</description>
+    <url>https://github.com/org-metalib/metalib-bom</url>
+    <developers>
+        <developer>
+            <name>Igor Katrayev</name>
+            <url>https://github.com/ikatraev</url>
+        </developer>
+    </developers>
 
     <modules>
         <module>metalib-maven-bom</module>
