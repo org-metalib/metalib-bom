@@ -1,23 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.metalib.maven</groupId>
     <artifactId>metalib-bom</artifactId>
     <packaging>pom</packaging>
-    <version>0.0.2-SNAPSHOT</version>
-    <name>metalib-bom</name>
-    <description>Metalib Maven Bills of Materials</description>
-    <url>https://github.com/org-metalib/metalib-bom</url>
-
-    <developers>
-        <developer>
-            <name>Igor Katrayev</name>
-            <email>ikatraev@gmail.com</email>
-            <organization>metalib.org</organization>
-            <organizationUrl>https://github.com/org-metalib</organizationUrl>
-        </developer>
-    </developers>
+    <version>0.0.1-SNAPSHOT</version>
 
     <modules>
         <module>metalib-maven-bom</module>
