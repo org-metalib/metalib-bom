@@ -1,5 +1,7 @@
 # Metalib Maven Bills of Materials
 
+[![build_status](https://travis-ci.org/phillip-kruger/apiee.svg?branch=master)](https://travis-ci.org/phillip-kruger/apiee)
+
 This projects contains a collection of various maven "Bill of Material" projects
 
 ## References

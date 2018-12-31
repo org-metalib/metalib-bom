@@ -26,9 +26,34 @@
 
     </properties>
 
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.6.7</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>ossrh</serverId>
+                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
     <scm>
-        <connection>scm:git:https://github.com/linux-china/kotlin-platform-bom</connection>
-        <url>https://github.com/linux-china/kotlin-platform-bom</url>
+        <connection>scm:git:git@github.com:org-metalib/metalib-bom.git</connection>
+        <url>https://github.com/org-metalib/metalib-bom</url>
     </scm>
 
 </project>
