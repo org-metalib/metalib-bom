@@ -1,23 +1,16 @@
 language: java
-jdk:
-  - oraclejdk8
-install: true
-script: mvn clean install -DprocessorIntegrationTest.toolchainsFile=etc/toolchains-travis-jenkins.xml -B -V
-after_success:
-  - mvn jacoco:report && bash <(curl -s https://codecov.io/bash) || echo "Codecov did not collect coverage reports"
+jdk: oraclejdk8
+
+env:
+  global:
+    - secure: "VARb2qphSTYbl0naPzmX2Csely7QOrqFadSZNj8rhT9Dy3Ex4mbVRi2QXCvk1f2UgNPe1I3adc/N2SCosvXSQ0YoaQkAP7fVD9PkB0qx5xHX9ZNID7/KiVjLzupGpRoglCzyDB1hWv3+/EVW3UmLCodQONL8i1iP9RdZHnBgU145aKE9zhPSUt//YvmpMxTJChgzWvFQBCLKfKSrHrSDTN6HzEE3EanAfH5/wPdlNsLKYHN50MugrGooPR+9WWeWHpsQlC4c2RHr61HbRU3dj0qVUwFnVjzDeIvyWZSvE4eV9P7JMEC34p9+EVjzJx8kh1l730LUqJ6Gw1Z4WOcwVfDCW4i9T5LHZRgDvr+CIQ2Ao6DikJFiepbQ4CgKBGpys+p/tQ3Q4aKAFt9Ein4f+7BOEbCEsLWhZxeoRLVEOgh5wKdsgX70Z8vHNxfo3rGRFRW5ApeCe+fvV2IvYdaOiszNAvNjar7hxtiDyXPXt53leFyIi7J72bo9OvzDu/U6+MH3ppVGEgmUvTm/sHIkwJK9X3UCig0RV3qfN9IDsGio4FxXmacTHCtSPCSUIG6RL/ZmMRZ8ZpuWCAmkTxij1kal0+9Udo3+qDWVgUaeZRyldYgZIbUxcZgn3WT28jZMww1xJdDUitY+TmJksQ6j0szleUHxTgnKWULGVfhR3Fc="
+    - secure: "2QmyNM2/jPEl7TbKRNLPKrb9P1qTTnX8OZMbYmZGLBPJDoxwnPN2snSVAxdPoxdW6BymKJ6E1lMeOdgjkWPvU0Q3CrAttN6pMDqL7ukmlSurTTPMIgGCJorqbuDCeDcpUQDKJMHAEQbDFEyNYnQ4kl5WM0gKA0U4JC7L/dXPVWb0bG9nGIxx3e27hBfWBelduZuzrAcLevYI29SKHE2QeMraLA76+CUmxIgl0SfIIbzMeJbtAe2hgp0Dun6esDty2mYAqCnp6VFs8Jz9lQfL/9QI4mOqry9hqpJBBwri0zT+0zRYdfdcl28tb8SCgygZTgQAMpWVaWXWopnWBAqe0FawS4pGebN4O8VZql9SB2CpEWWjG+1fLnxxb2Si+zQWcuQecTvG7VM/9oOINUOd7s9qJcqW4I+gI/mPDly7z8yYVC6nt3xqC0fHNZ1XxXfpKgX0quM+CDF6LzGQeRsGbiRqPSUNAUyY/aoiqahdWFh6iwNAExTxYOLErfVH/ZY55GEdQ/I7z7oBoVHyMbYUJCnp2yJhf/qT/6fc2fxZ5fI7dlV4X/MtbbWFbR3Trv0zqskocKQuNDXgp7zeCta94FfMxO0bxlL6h6RaY2dxuJOp4Gq7BKeEL5IW0RSJfGTApNqpNiucrVLFr1LWf6d1bbML1AV77kdoRn80RsbWHvQ="
+    - secure: "kV+m6hrzotaVXbWTI0vTVi1WFoygzhee/xpOrRBlt9AA2YrrwDaY5H7FG7R5Qfl4ainFf0MkV0a4MW3oRzZeeHl/9rThlLsOZYWxYIERnyDAMcwzTPqEr42BFk1DonBLYyHryJJWL3kiA0cSY1mBFeob7MhuMuwh938OZR8+8T291RxPIlOw44F4ApE45x/DvTnyCjnEK5X6y2y3aKhp54WNjUpVGejyydJ0N5l+WCpB34H+9ZzXSe9RabjbvYH6jkGw8gnCLbT8z8fz3721+NNw/946YbRzGBCRJYgqDBgyYeqDRRKHtBlKqQS3BHF6YXysOsxPWymzE5xrYlyCUWWlD5QNMoF3ZsAYcxNmLjpHKLNCqyqKXF/hC8P9OXiWdbky0HEmFPb5fmpxthV9/DAxN/kJ0ZPYPFF+4FuR0ScfZMDaShbN4kr7a7E7m6nQq4wcwqWicZA6TqZA1NsDBG4hECvzR+juCdt9UrsR/YSvT9OQz4e3KKeB8Pb468YpYuKff9vFd3JVDGIfHw5urMis4EffE+Kxx8Kpq4BrrzXZwn1xAOcKacf9JkKX1kSOxAYQgwZe/CgH+c/lYUIQRsmqvPbOvm11LCMI2/yi9M+/eOVldfrfuJOfIuNSphYUBdPI9Db8Wg7+nQxio1sVxWQHZXFLLdqby8BVjLoYjww="
+
+script: make build
 
 deploy:
   provider: script
-  script: "test ${TRAVIS_TEST_RESULT} -eq 0 && mvn -s etc/travis-settings.xml -DskipTests=true deploy"
-  skip_cleanup: true
+  script: make travis-deploy
   on:
-    branch: master
-
-sudo: required
-cache:
-  directories:
-    - $HOME/.m2
-addons:
-  apt:
-    packages:
-      - oracle-java8-installer
+    tags: true
