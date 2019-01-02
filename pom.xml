@@ -5,7 +5,7 @@
     <groupId>org.metalib.maven</groupId>
     <artifactId>metalib-bom</artifactId>
     <packaging>pom</packaging>
-    <version>0.0.4-SNAPSHOT</version>
+    <version>0.0.4</version>
 
     <modules>
         <module>metalib-maven-bom</module>
@@ -133,7 +133,7 @@
     <scm>
         <connection>scm:git:git@github.com:org-metalib/metalib-bom.git</connection>
         <url>https://github.com/org-metalib/metalib-bom</url>
-        <tag>metalib-bom-0.0.1</tag>
+        <tag>0.0.4</tag>
     </scm>
 
 </project>
